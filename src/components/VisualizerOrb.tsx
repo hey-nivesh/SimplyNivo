@@ -99,25 +99,12 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
         true
       );
     } else {
-      // Calm ambient idle breathing
-      scale.value = withRepeat(
-        withSequence(
-          withTiming(1.04, { duration: 2200, easing: Easing.inOut(Easing.ease) }),
-          withTiming(0.98, { duration: 2200, easing: Easing.inOut(Easing.ease) })
-        ),
-        -1,
-        true
-      );
-
-      rotation.value = withRepeat(
-        withTiming(360, { duration: 24000, easing: Easing.linear }),
-        -1,
-        false
-      );
-
-      outerRingScale.value = withTiming(1.08, { duration: 800 });
-      outerRingOpacity.value = withTiming(0.18, { duration: 800 });
-      innerPulse.value = withTiming(1, { duration: 600 });
+      // Idle state: Halt continuous repeating loops to conserve battery and GPU cycles on Android
+      scale.value = withTiming(1.0, { duration: 500, easing: Easing.out(Easing.ease) });
+      rotation.value = withTiming(0, { duration: 500 });
+      outerRingScale.value = withTiming(1.0, { duration: 500 });
+      outerRingOpacity.value = withTiming(0.12, { duration: 500 });
+      innerPulse.value = withTiming(1.0, { duration: 500 });
     }
   }, [isActive, mode, meteringLevel, scale, rotation, outerRingScale, outerRingOpacity, innerPulse]);
 

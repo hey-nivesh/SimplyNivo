@@ -209,7 +209,7 @@ export default function CompanionScreen() {
           type={isColdStartWarming ? 'warming' : 'offline'}
           message={
             isColdStartWarming
-              ? 'AI server is warming up (free-tier cold start). Please allow 5-10 seconds.'
+              ? 'Warming up SimplyNivo AI Engine (First launch may take a few seconds)...'
               : 'Offline preview mode active. Using instant local AI engine.'
           }
         />

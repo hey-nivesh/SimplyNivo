@@ -253,74 +253,81 @@ export function useSimplyNivo() {
         });
       }, 3000);
 
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-
-      const controller = new AbortController();
-      abortControllerRef.current = controller;
-
-      const timeoutMs = options?.timeoutMs ?? DEFAULT_TIMEOUT_MS;
-      const timeoutId = setTimeout(() => {
-        controller.abort();
-      }, timeoutMs);
-
       let finalOutput: string | null = null;
       let finalError: string | null = null;
       let wasOfflineFallback = false;
 
+      const maxAttempts = 3;
+      const retryDelays = [3000, 5000];
+
       try {
-        const response = await fetch(`${DEFAULT_BACKEND_URL}${API_CONFIG.ENDPOINTS.SIMPLIFY}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            situation: rawText.trim() || 'Audio voice recording conversation',
-            text: rawText.trim() || 'Audio voice recording conversation',
-            audioUri,
-            tone,
-            category: options?.category ?? 'general',
-          }),
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeoutId);
-
-        if (!response.ok) {
-          throw new Error(`Server responded with status: ${response.status}`);
+        for (let attempt = 0; attempt < maxAttempts; attempt++) {
+        if (abortControllerRef.current) {
+          abortControllerRef.current.abort();
         }
 
-        const data = (await response.json()) as SimplyNivoResponse;
-        finalOutput =
-          data.simplified ??
-          data.output ??
-          data.result ??
-          (data.data
-            ? `${data.data.corePoint}\n\n"${data.data.spokenPhrasing}"\n${(data.data.talkingPoints || []).map((p) => `• ${p}`).join('\n')}`
-            : null);
+        const attemptController = new AbortController();
+        abortControllerRef.current = attemptController;
 
-        if (!finalOutput) {
-          throw new Error(data.error ?? 'Received empty response from server.');
+        const attemptTimeoutMs = options?.timeoutMs ?? (attempt === 0 ? DEFAULT_TIMEOUT_MS : 20000);
+        const attemptTimeoutId = setTimeout(() => {
+          attemptController.abort();
+        }, attemptTimeoutMs);
+
+        try {
+          const response = await fetch(`${DEFAULT_BACKEND_URL}${API_CONFIG.ENDPOINTS.SIMPLIFY}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              situation: rawText.trim() || 'Audio voice recording conversation',
+              text: rawText.trim() || 'Audio voice recording conversation',
+              audioUri,
+              tone,
+              category: options?.category ?? 'general',
+            }),
+            signal: attemptController.signal,
+          });
+
+          clearTimeout(attemptTimeoutId);
+
+          if (!response.ok) {
+            throw new Error(`Server responded with status: ${response.status}`);
+          }
+
+          const data = (await response.json()) as SimplyNivoResponse;
+          finalOutput =
+            data.simplified ??
+            data.output ??
+            data.result ??
+            (data.data
+              ? `${data.data.corePoint}\n\n"${data.data.spokenPhrasing}"\n${(data.data.talkingPoints || []).map((p) => `• ${p}`).join('\n')}`
+              : null);
+
+          if (!finalOutput) {
+            throw new Error(data.error ?? 'Received empty response from server.');
+          }
+
+          // Successful response obtained, break retry loop
+          wasOfflineFallback = false;
+          break;
+        } catch (attemptErr: unknown) {
+          clearTimeout(attemptTimeoutId);
+          console.warn(`[SimplyNivo API] Attempt ${attempt + 1}/${maxAttempts} failed:`, attemptErr);
+
+          if (attempt < maxAttempts - 1) {
+            const delay = retryDelays[attempt] ?? 3000;
+            await new Promise((resolve) => setTimeout(resolve, delay));
+          } else {
+            // All attempts exhausted, engage local fallback mode
+            wasOfflineFallback = true;
+            finalOutput = generateSmartSimplification(rawText || 'meeting discussion', tone);
+            finalError = 'Warming up SimplyNivo AI Engine (First launch may take a few seconds)...';
+          }
         }
-      } catch (err: unknown) {
-        clearTimeout(timeoutId);
-        wasOfflineFallback = true;
-
-        const isAbort =
-          err instanceof Error &&
-          (err.name === 'AbortError' || err.message.toLowerCase().includes('aborted'));
-
-        console.warn(
-          `[SimplyNivo API] Request ${isAbort ? 'timed out' : 'offline'}. Engaging AI fallback.`
-        );
-
-        // Smart realistic offline fallback
-        finalOutput = generateSmartSimplification(rawText || 'meeting discussion', tone);
-        finalError = isAbort
-          ? 'Backend proxy warming up (Render cold start). Showing instant AI preview.'
-          : 'Service temporarily unreachable. Showing instant AI preview.';
-      } finally {
+      }
+    } finally {
         clearTimeout(coldStartTimer);
         const parsed = finalOutput ? parseStructuredOutput(finalOutput) : null;
 

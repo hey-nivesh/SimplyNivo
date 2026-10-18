@@ -21,12 +21,17 @@
       }
     },
     "android": {
+      "package": "com.simplynivo.app",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/expo.icon/Assets/logo.png",
         "backgroundColor": "#0A0813"
       },
-      "package": "com.simplynivo.app",
-      "permissions": ["RECORD_AUDIO", "MODIFY_AUDIO_SETTINGS"],
+      "permissions": [
+        "RECORD_AUDIO",
+        "MODIFY_AUDIO_SETTINGS",
+        "INTERNET"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -42,6 +47,12 @@
           "image": "./assets/expo.icon/Assets/logo.png",
           "resizeMode": "contain",
           "imageWidth": 180
+        }
+      ],
+      [
+        "expo-av",
+        {
+          "microphonePermission": "SimplyNivo needs access to your microphone so you can explain your situations."
         }
       ]
     ],
