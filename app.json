@@ -23,14 +23,20 @@
       "output": "server",
       "favicon": "./assets/images/favicon.png"
     },
+    "splash": {
+      "image": "./assets/expo.icon/Assets/logo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0A0813"
+    },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#208AEF",
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 76
+          "backgroundColor": "#0A0813",
+          "image": "./assets/expo.icon/Assets/logo.png",
+          "resizeMode": "contain",
+          "imageWidth": 180
         }
       ]
     ],

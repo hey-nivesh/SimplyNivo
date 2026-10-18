@@ -34,8 +34,11 @@ export default function AppTabs() {
 }
 
 export function TabButton({ children, isFocused, ...props }: TabTriggerSlotProps) {
+  const { style: _style, ...restProps } = props as unknown as { style?: unknown };
   return (
-    <Pressable {...props} style={({ pressed }) => pressed && styles.pressed}>
+    <Pressable
+      {...(restProps as React.ComponentProps<typeof Pressable>)}
+      style={({ pressed }) => (pressed ? styles.pressed : undefined)}>
       <ThemedView
         type={isFocused ? 'backgroundSelected' : 'backgroundElement'}
         style={styles.tabButtonView}>

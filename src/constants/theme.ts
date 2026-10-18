@@ -16,11 +16,11 @@ export const Colors = {
     textSecondary: '#60646C',
   },
   dark: {
-    text: '#ffffff',
-    background: '#000000',
-    backgroundElement: '#212225',
-    backgroundSelected: '#2E3135',
-    textSecondary: '#B0B4BA',
+    text: '#FFFFFF',
+    background: '#0A0813',
+    backgroundElement: '#161226',
+    backgroundSelected: '#2E274C',
+    textSecondary: '#A09CAB',
   },
 } as const;
 
@@ -38,9 +38,9 @@ export const Fonts = Platform.select({
     mono: 'ui-monospace',
   },
   default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
+    sans: 'System',
+    serif: 'System',
+    rounded: 'System',
     mono: 'monospace',
   },
   web: {
