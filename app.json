@@ -30,7 +30,9 @@
       "permissions": [
         "RECORD_AUDIO",
         "MODIFY_AUDIO_SETTINGS",
-        "INTERNET"
+        "INTERNET",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
       "predictiveBackGestureEnabled": false
     },
@@ -59,6 +61,17 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "projectId": "67c5dbc4-3acd-48b2-8259-af78063bc33b"
+      }
+    },
+    "owner": "nivesh007"
   }
 }
