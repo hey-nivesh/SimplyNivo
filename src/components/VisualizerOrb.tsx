@@ -21,8 +21,8 @@ interface VisualizerOrbProps {
 
 /**
  * High-Fidelity Holographic Voice Visualizer Orb.
- * Uses react-native-reanimated to create multi-layered concentric pulsing rings,
- * rotational harmonic shifts, and breathing speech rhythm visualizers.
+ * Uses react-native-reanimated with concentric pulsing rings in Electric Neon Orange (#FF6B00 / #FF8800),
+ * rotational harmonic shifts, and dynamic speech rhythm visualizers.
  */
 export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
   isActive,
@@ -47,7 +47,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
       outerRingScale.value = withTiming(1.1 + meteringLevel * 0.45, {
         duration: 120,
       });
-      outerRingOpacity.value = withTiming(0.2 + meteringLevel * 0.5, {
+      outerRingOpacity.value = withTiming(0.25 + meteringLevel * 0.5, {
         duration: 120,
       });
     } else if (isActive || mode === 'listening' || mode === 'speaking') {
@@ -70,7 +70,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
         false
       );
 
-      // Concentric expanding outer glow waves
+      // Concentric expanding outer glow waves in neon orange
       outerRingScale.value = withRepeat(
         withSequence(
           withTiming(1.38, { duration: 1200, easing: Easing.out(Easing.ease) }),
@@ -82,8 +82,8 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
 
       outerRingOpacity.value = withRepeat(
         withSequence(
-          withTiming(0.45, { duration: 1200, easing: Easing.ease }),
-          withTiming(0.12, { duration: 1200, easing: Easing.ease })
+          withTiming(0.5, { duration: 1200, easing: Easing.ease }),
+          withTiming(0.15, { duration: 1200, easing: Easing.ease })
         ),
         -1,
         true
@@ -116,7 +116,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
       );
 
       outerRingScale.value = withTiming(1.08, { duration: 800 });
-      outerRingOpacity.value = withTiming(0.15, { duration: 800 });
+      outerRingOpacity.value = withTiming(0.18, { duration: 800 });
       innerPulse.value = withTiming(1, { duration: 600 });
     }
   }, [isActive, mode, meteringLevel, scale, rotation, outerRingScale, outerRingOpacity, innerPulse]);
@@ -143,7 +143,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
 
   return (
     <View style={[styles.container, { width: size * 1.5, height: size * 1.5 }]}>
-      {/* Layer 1: Ambient Outer Pulse Wave */}
+      {/* Layer 1: Ambient Outer Pulse Wave in Neon Orange */}
       <Animated.View
         style={[
           styles.outerPulseWave,
@@ -156,7 +156,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
         ]}
       >
         <LinearGradient
-          colors={['rgba(192, 125, 241, 0.35)', 'rgba(155, 81, 224, 0.1)', 'transparent']}
+          colors={['rgba(255, 136, 0, 0.45)', 'rgba(255, 107, 0, 0.15)', 'transparent']}
           style={StyleSheet.absoluteFill}
           start={{ x: 0.5, y: 0.5 }}
           end={{ x: 1, y: 1 }}
@@ -176,7 +176,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
         ]}
       />
 
-      {/* Layer 3: Rotational Particle Halo */}
+      {/* Layer 3: Rotational Particle Halo in Electric Orange */}
       <Animated.View
         style={[
           styles.rotatingHalo,
@@ -190,10 +190,10 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
       >
         <LinearGradient
           colors={[
-            'rgba(212, 155, 255, 0.65)',
-            'rgba(155, 81, 224, 0.2)',
-            'rgba(192, 125, 241, 0.55)',
-            'rgba(108, 37, 184, 0.15)',
+            'rgba(255, 170, 85, 0.75)',
+            'rgba(255, 107, 0, 0.35)',
+            'rgba(255, 136, 0, 0.65)',
+            'rgba(204, 82, 0, 0.2)',
           ]}
           locations={[0, 0.35, 0.7, 1]}
           style={StyleSheet.absoluteFill}
@@ -215,7 +215,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
         ]}
       >
         <LinearGradient
-          colors={['#DDBBFF', '#C07DF1', '#9B51E0', '#4B1882', '#1B0B3A']}
+          colors={['#FFE2CC', '#FFAA55', '#FF6B00', '#CC5200', '#331500']}
           locations={[0, 0.22, 0.52, 0.8, 1]}
           style={[styles.coreFill, { borderRadius: halfSize }]}
           start={{ x: 0.25, y: 0.1 }}
@@ -237,7 +237,7 @@ export const VisualizerOrb: React.FC<VisualizerOrbProps> = ({
             ]}
           >
             <LinearGradient
-              colors={['rgba(255, 255, 255, 0.5)', 'rgba(221, 187, 255, 0.2)', 'transparent']}
+              colors={['rgba(255, 255, 255, 0.55)', 'rgba(255, 170, 85, 0.3)', 'transparent']}
               style={StyleSheet.absoluteFill}
             />
           </Animated.View>
@@ -255,26 +255,26 @@ const styles = StyleSheet.create({
   outerPulseWave: {
     position: 'absolute',
     borderWidth: 1.5,
-    borderColor: 'rgba(192, 125, 241, 0.35)',
+    borderColor: 'rgba(255, 136, 0, 0.4)',
     overflow: 'hidden',
   },
   midRippleRing: {
     position: 'absolute',
     borderWidth: 1,
-    borderColor: 'rgba(221, 187, 255, 0.25)',
-    backgroundColor: 'rgba(155, 81, 224, 0.08)',
+    borderColor: 'rgba(255, 170, 85, 0.3)',
+    backgroundColor: 'rgba(255, 107, 0, 0.1)',
   },
   rotatingHalo: {
     position: 'absolute',
     borderWidth: 1.5,
-    borderColor: 'rgba(212, 155, 255, 0.4)',
+    borderColor: 'rgba(255, 170, 85, 0.45)',
     overflow: 'hidden',
   },
   coreOrb: {
-    shadowColor: '#C07DF1',
+    shadowColor: '#FF6B00',
     shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.75,
-    shadowRadius: 28,
+    shadowOpacity: 0.85,
+    shadowRadius: 30,
     elevation: 16,
   },
   coreFill: {

@@ -5,12 +5,16 @@ module.exports = {
     extend: {
       colors: {
         background: '#0A0813',
-        primary: '#9B51E0',
-        accent: '#C07DF1',
-        cardBg: '#161226',
+        primary: '#FF6B00',
+        primaryLight: '#FF8800',
+        primaryDark: '#CC5200',
+        accent: '#FF8800',
+        cardBg: '#18121E',
+        cardBorder: '#2E2218',
         textPrimary: '#FFFFFF',
         textSecondary: '#A09CAB',
-        border: '#2E274C',
+        textMuted: '#686375',
+        border: '#2E2218',
       },
       fontFamily: {
         sans: [

@@ -65,16 +65,16 @@ export const ShineButton: React.FC<ShineButtonProps> = ({
 
   const getGradientColors = (): [string, string, ...string[]] => {
     if (disabled) {
-      return ['#2E274C', '#1D1735', '#161226'];
+      return ['#2E2218', '#1E1712', '#140E0A'];
     }
     switch (variant) {
       case 'accent':
-        return ['#D49BFF', '#C07DF1', '#9843D6'];
+        return ['#FFAA55', '#FF8800', '#FF6B00'];
       case 'secondary':
-        return ['#2A2149', '#1C1536', '#140E29'];
+        return ['#2E1E12', '#1E140C', '#140D08'];
       case 'primary':
       default:
-        return ['#B36BF6', '#9B51E0', '#6C25B8'];
+        return ['#FF7A00', '#FF5500'];
     }
   };
 
@@ -148,7 +148,7 @@ export const ShineButton: React.FC<ShineButtonProps> = ({
           <View
             style={[
               styles.bottomShelfEdge,
-              { borderBottomColor: variant === 'secondary' ? '#090514' : '#4E1480' },
+              { borderBottomColor: variant === 'secondary' ? '#140D08' : '#993D00' },
             ]}
             pointerEvents="none"
           />
@@ -163,21 +163,21 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   glowShadow: {
-    shadowColor: '#9B51E0',
+    shadowColor: '#FF6B00',
     shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.55,
-    shadowRadius: 16,
+    shadowOpacity: 0.4,
+    shadowRadius: 12,
     elevation: 8,
   },
   pressableBase: {
     overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTopColor: '#E6D0FF',
-    borderTopWidth: 0.75,
-    borderLeftColor: 'rgba(221, 187, 255, 0.25)',
+    borderTopColor: '#FFAA55',
+    borderTopWidth: 0.5,
+    borderLeftColor: 'rgba(255, 170, 85, 0.25)',
     borderLeftWidth: 0.5,
-    borderRightColor: 'rgba(155, 81, 224, 0.25)',
+    borderRightColor: 'rgba(255, 107, 0, 0.25)',
     borderRightWidth: 0.5,
   },
   glossOverlay: {

@@ -13,7 +13,7 @@ interface GlowBackgroundProps {
 /**
  * Reusable Cinematic Dark Smoke & Nebula Glow Background.
  * Layered with organic center-to-bottom gradient diffusion,
- * ambient violet haze, and deep OLED obsidian foundation.
+ * ambient electric orange haze (#FF6B00 / #331500), and deep OLED obsidian foundation.
  */
 export const GlowBackground: React.FC<GlowBackgroundProps> = ({
   children,
@@ -22,18 +22,18 @@ export const GlowBackground: React.FC<GlowBackgroundProps> = ({
 }) => {
   return (
     <View style={[styles.container, style]}>
-      {/* 1. Base Full-Screen Deep Obsidian Gradient */}
+      {/* 1. Base Full-Screen Deep Obsidian & Charcoal Foundation */}
       <LinearGradient
-        colors={['#020108', '#0A0618', '#05020D', '#000000']}
-        locations={[0, 0.4, 0.75, 1]}
+        colors={['#0A0813', '#120804', '#0A0813', '#000000']}
+        locations={[0, 0.35, 0.75, 1]}
         style={StyleSheet.absoluteFill}
       />
 
-      {/* 2. Top-Right Subtle Nebula Haze */}
+      {/* 2. Top-Right Subtle Orange Nebula Haze */}
       {(glowPosition === 'center' || glowPosition === 'both') && (
         <View style={styles.topNebulaHaze} pointerEvents="none">
           <LinearGradient
-            colors={['rgba(155, 81, 224, 0.12)', 'rgba(27, 11, 58, 0.05)', 'transparent']}
+            colors={['rgba(255, 107, 0, 0.12)', 'rgba(51, 21, 0, 0.05)', 'transparent']}
             style={styles.nebulaCircle}
             start={{ x: 0.5, y: 0.2 }}
             end={{ x: 0.8, y: 1 }}
@@ -41,26 +41,26 @@ export const GlowBackground: React.FC<GlowBackgroundProps> = ({
         </View>
       )}
 
-      {/* 3. Center-to-Bottom Smoke & Violet Nebula Glow */}
+      {/* 3. Center-to-Bottom Smoke & Orange Nebula Glow (#331500 fading down to #0A0813) */}
       {(glowPosition === 'bottom' || glowPosition === 'both') && (
         <View style={styles.bottomSmokeContainer} pointerEvents="none">
           {/* Outer Deep Smoke Diffusion */}
           <LinearGradient
-            colors={['transparent', 'rgba(27, 11, 58, 0.55)', 'rgba(14, 5, 32, 0.85)', '#000000']}
+            colors={['transparent', 'rgba(51, 21, 0, 0.45)', 'rgba(26, 10, 0, 0.85)', '#0A0813']}
             locations={[0, 0.35, 0.7, 1]}
             style={styles.bottomOuterSmoke}
           />
 
-          {/* Core Violet Nebula Bulb (Circular Center Glow) */}
+          {/* Core Orange Nebula Bulb (Circular Center Glow) */}
           <View style={styles.smokeBulbWrapper}>
             <LinearGradient
               colors={[
-                'rgba(192, 125, 241, 0.22)',
-                'rgba(155, 81, 224, 0.18)',
-                'rgba(27, 11, 58, 0.45)',
-                'transparent',
+                'rgba(255, 136, 0, 0.24)',
+                'rgba(255, 107, 0, 0.18)',
+                '#331500',
+                '#0A0813',
               ]}
-              locations={[0, 0.25, 0.6, 1]}
+              locations={[0, 0.25, 0.65, 1]}
               style={styles.smokeBulb}
               start={{ x: 0.5, y: 0.3 }}
               end={{ x: 0.5, y: 1 }}
@@ -78,7 +78,7 @@ export const GlowBackground: React.FC<GlowBackgroundProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#020108',
+    backgroundColor: '#0A0813',
   },
   topNebulaHaze: {
     position: 'absolute',

@@ -599,13 +599,13 @@ const styles = StyleSheet.create({
     height: 250,
   },
   contextCard: {
-    backgroundColor: 'rgba(22, 18, 38, 0.88)',
-    borderColor: 'rgba(155, 81, 224, 0.3)',
+    backgroundColor: 'rgba(24, 18, 30, 0.88)',
+    borderColor: 'rgba(255, 107, 0, 0.35)',
     borderWidth: 1,
     borderRadius: 18,
     padding: 16,
     marginBottom: 20,
-    shadowColor: '#9B51E0',
+    shadowColor: '#FF6B00',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 10,
@@ -676,8 +676,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 3,
     borderRadius: 8,
-    backgroundColor: 'rgba(155, 81, 224, 0.12)',
-    borderColor: 'rgba(155, 81, 224, 0.3)',
+    backgroundColor: 'rgba(255, 107, 0, 0.12)',
+    borderColor: 'rgba(255, 107, 0, 0.3)',
     borderWidth: 1,
   },
   tunePersonaText: {
@@ -692,7 +692,7 @@ const styles = StyleSheet.create({
   },
   tonePill: {
     flex: 1,
-    backgroundColor: 'rgba(22, 18, 38, 0.75)',
+    backgroundColor: 'rgba(24, 18, 30, 0.75)',
     borderColor: colors.border,
     borderWidth: 1,
     borderRadius: 14,
@@ -702,7 +702,7 @@ const styles = StyleSheet.create({
   },
   tonePillActive: {
     borderColor: colors.primary,
-    backgroundColor: 'rgba(155, 81, 224, 0.18)',
+    backgroundColor: 'rgba(255, 107, 0, 0.18)',
   },
   toneTitle: {
     fontSize: 12,
@@ -735,7 +735,7 @@ const styles = StyleSheet.create({
     height: 68,
     borderRadius: 22,
     borderWidth: 1.5,
-    borderColor: 'rgba(192, 125, 241, 0.45)',
+    borderColor: 'rgba(255, 136, 0, 0.45)',
   },
   concentricPulseInner: {
     position: 'absolute',
@@ -743,7 +743,7 @@ const styles = StyleSheet.create({
     height: 78,
     borderRadius: 26,
     borderWidth: 1,
-    borderColor: 'rgba(155, 81, 224, 0.25)',
+    borderColor: 'rgba(255, 107, 0, 0.25)',
   },
   micButton: {
     width: '100%',
@@ -855,8 +855,8 @@ const styles = StyleSheet.create({
   iconActionBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(22, 18, 38, 0.85)',
-    borderColor: 'rgba(192, 125, 241, 0.35)',
+    backgroundColor: 'rgba(24, 18, 30, 0.85)',
+    borderColor: 'rgba(255, 136, 0, 0.35)',
     borderWidth: 1,
     borderRadius: 8,
     paddingHorizontal: 8,
@@ -875,7 +875,7 @@ const styles = StyleSheet.create({
   ttsButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(192, 125, 241, 0.18)',
+    backgroundColor: 'rgba(255, 136, 0, 0.15)',
     borderColor: colors.accent,
     borderWidth: 1,
     borderRadius: 8,
@@ -920,13 +920,13 @@ const styles = StyleSheet.create({
   },
   quoteCard: {
     backgroundColor: 'rgba(10, 8, 19, 0.65)',
-    borderColor: 'rgba(155, 81, 224, 0.3)',
+    borderColor: 'rgba(255, 107, 0, 0.3)',
     borderWidth: 1,
     borderRadius: 12,
     padding: 12,
   },
   quoteText: {
-    color: '#EBD9FF',
+    color: '#FFEACC',
     fontSize: 14,
     lineHeight: 21,
     fontStyle: 'italic',

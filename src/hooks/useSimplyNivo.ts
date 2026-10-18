@@ -2,6 +2,7 @@ import * as Haptics from 'expo-haptics';
 import * as Speech from 'expo-speech';
 import { useCallback, useRef, useState } from 'react';
 import { Platform } from 'react-native';
+import { API_CONFIG } from '../constants/config';
 import { supabase } from '../lib/supabase';
 import { PreferredTone } from '../types/database';
 
@@ -52,10 +53,8 @@ interface SimplyNivoResponse {
   error?: string;
 }
 
-const DEFAULT_BACKEND_URL =
-  process.env.EXPO_PUBLIC_BACKEND_URL ?? 'https://simplynivo-backend.onrender.com';
-
-const DEFAULT_TIMEOUT_MS = 12000;
+const DEFAULT_BACKEND_URL = API_CONFIG.BASE_URL.replace(/\/$/, '');
+const DEFAULT_TIMEOUT_MS = API_CONFIG.TIMEOUT;
 
 /**
  * Parses raw text output into structured components (Core Point, Out Loud, Bullet Points)
@@ -271,7 +270,7 @@ export function useSimplyNivo() {
       let wasOfflineFallback = false;
 
       try {
-        const response = await fetch(`${DEFAULT_BACKEND_URL}/api/simplify`, {
+        const response = await fetch(`${DEFAULT_BACKEND_URL}${API_CONFIG.ENDPOINTS.SIMPLIFY}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

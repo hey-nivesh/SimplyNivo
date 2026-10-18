@@ -1,32 +1,37 @@
 {
   "expo": {
     "name": "SimplyNivo",
-    "slug": "SimplyNivo",
+    "slug": "simplynivo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/expo.icon/Assets/logo.png",
+    "userInterfaceStyle": "dark",
+    "backgroundColor": "#0A0813",
     "scheme": "simplynivo",
-    "userInterfaceStyle": "automatic",
-    "ios": {
-      "icon": "./assets/expo.icon"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
-    },
-    "web": {
-      "output": "server",
-      "favicon": "./assets/images/favicon.png"
-    },
     "splash": {
       "image": "./assets/expo.icon/Assets/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#0A0813"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.simplynivo.app",
+      "infoPlist": {
+        "NSMicrophoneUsageDescription": "SimplyNivo requires microphone access to record your voice and simplify your situations."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/expo.icon/Assets/logo.png",
+        "backgroundColor": "#0A0813"
+      },
+      "package": "com.simplynivo.app",
+      "permissions": ["RECORD_AUDIO", "MODIFY_AUDIO_SETTINGS"],
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "server",
+      "favicon": "./assets/expo.icon/Assets/logo.png"
     },
     "plugins": [
       "expo-router",

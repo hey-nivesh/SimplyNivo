@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     shadowColor: '#F59E0B',
   },
   cardWarming: {
-    backgroundColor: 'rgba(26, 16, 44, 0.95)',
+    backgroundColor: 'rgba(38, 22, 14, 0.95)',
     borderColor: colors.primary,
     shadowColor: colors.primary,
   },

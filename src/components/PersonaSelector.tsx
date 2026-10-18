@@ -205,11 +205,11 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   sheetContainer: {
-    backgroundColor: '#161226',
+    backgroundColor: '#18121E',
     borderTopLeftRadius: 26,
     borderTopRightRadius: 26,
     borderTopWidth: 1.5,
-    borderTopColor: 'rgba(155, 81, 224, 0.45)',
+    borderTopColor: 'rgba(255, 107, 0, 0.45)',
     paddingBottom: 36,
   },
   header: {
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
     alignItems: 'center',
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(46, 39, 76, 0.6)',
+    borderBottomColor: 'rgba(46, 34, 24, 0.6)',
   },
   dragHandle: {
     width: 38,
@@ -259,13 +259,13 @@ const styles = StyleSheet.create({
   },
   personaCard: {
     backgroundColor: 'rgba(10, 8, 19, 0.7)',
-    borderColor: 'rgba(46, 39, 76, 0.8)',
+    borderColor: 'rgba(46, 34, 24, 0.8)',
     borderWidth: 1,
     borderRadius: 18,
     padding: 16,
   },
   personaCardActive: {
-    backgroundColor: 'rgba(27, 20, 51, 0.95)',
+    backgroundColor: 'rgba(32, 22, 18, 0.95)',
     borderColor: colors.primary,
     borderWidth: 1.5,
     shadowColor: colors.primary,

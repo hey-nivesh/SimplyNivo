@@ -1,3 +1,5 @@
+import { API_CONFIG } from '../constants/config';
+
 export interface SystemHealthCheckResults {
   backendReachable: boolean;
   geminiActive: boolean;
@@ -10,7 +12,7 @@ export interface SystemHealthCheckResults {
  * Verifies Render backend status, Google Gemini API configuration, and Supabase connectivity.
  */
 export const runSystemHealthCheck = async (
-  backendUrl: string
+  backendUrl: string = API_CONFIG.BASE_URL
 ): Promise<SystemHealthCheckResults> => {
   const results: SystemHealthCheckResults = {
     backendReachable: false,

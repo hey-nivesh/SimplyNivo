@@ -1,11 +1,15 @@
 :root {
   --color-background: #0A0813;
-  --color-primary: #9B51E0;
-  --color-accent: #C07DF1;
-  --color-card-bg: #161226;
+  --color-primary: #FF6B00;
+  --color-primary-light: #FF8800;
+  --color-primary-dark: #CC5200;
+  --color-accent: #FF8800;
+  --color-card-bg: #18121E;
+  --color-card-border: #2E2218;
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #A09CAB;
-  --color-border: #2E274C;
+  --color-text-muted: #686375;
+  --color-border: #2E2218;
 
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Roboto, "Helvetica Neue", system-ui, sans-serif;
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Roboto, "Helvetica Neue", system-ui, sans-serif;
