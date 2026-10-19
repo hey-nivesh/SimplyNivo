@@ -148,7 +148,7 @@ export const AnimatedSplashScreen: React.FC<AnimatedSplashScreenProps> = ({
           {/* Logo Avatar */}
           <Animated.View style={[styles.logoWrapper, logoAnimatedStyle]}>
             <Image
-              source={require('../../assets/expo.icon/Assets/logo.png')}
+              source={require('../../assets/logo.png')}
               style={styles.logoImage}
               contentFit="contain"
             />
