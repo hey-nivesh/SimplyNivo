@@ -54,9 +54,6 @@
         "expo-build-properties",
         {
           "android": {
-            "compileSdkVersion": 34,
-            "targetSdkVersion": 34,
-            "buildToolsVersion": "34.0.0",
             "enableMinifyInReleaseBuilds": false,
             "enableProguardInReleaseBuilds": false,
             "extraProguardRules": "-keep class expo.modules.** { *; }\n-dontwarn expo.modules.**\n-dontwarn expo.modules.core.**\n-dontwarn expo.modules.av.**\n-keep class com.facebook.react.** { *; }\n-dontwarn com.facebook.react.**"
